@@ -14,7 +14,7 @@ class DocxRedactor:
     def __replace_text__(self, text):
         """ Helper function replaces all the characters
         with the replacment char except the empty spaces. """
-        return re.sub(r"[^\s-]", lambda m: self.replace_char * len(m.group(0)), text)
+        return "[" + re.sub(r"[^\s-]", lambda m: self.replace_char * len(m.group(0)), text) + "]"
         
     def __redact_helper__(self, doc_obj):
         """
@@ -29,7 +29,7 @@ class DocxRedactor:
                     inline = p.runs
                     for i in range(len(inline)):
                         if regex.search(inline[i].text):
-                            text = re.sub(reg, lambda m: self.__replace_text__(m.group(0)), inline[i].text)
+                            text = re.sub(reg, lambda m: self.__replace_text__(m.group(1)), inline[i].text)
                             inline[i].text = text
             for table in doc_obj.tables:
                 for row in table.rows:
