@@ -3,6 +3,7 @@ on: push
 jobs:
 
   build:
+    name: Build project
     # Windows is currently the only platform this action supports
     runs-on: windows-latest
 
@@ -28,15 +29,23 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: exe
-          path: build/app.exe
-          
-      # Download artifact
-      - name: Download Artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: app.exe
+          name: redactor
           path: build
+          
+          
+  build:
+    name: Release project
+    # Windows is currently the only platform this action supports
+    runs-on: windows-latest
+
+    steps:
+    
+      # Check-out repository
+      - uses: actions/checkout@v3
+      
+      - uses: actions/download-artifact@v3
+        with:
+          name: redactor
           
       - name: Display structure of downloaded files
         run: ls -R
