@@ -33,9 +33,7 @@ jobs:
           
       # Download artifact
       - name: Download Artifact
-      - uses: actions/checkout@v3
-
-      - uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v3
         with:
           name: app.exe
           path: build
