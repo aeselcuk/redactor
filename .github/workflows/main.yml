@@ -39,9 +39,10 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - needs: build
+      
       # Check-out repository
       - uses: actions/checkout@v3
+      - needs: build
       
       - uses: actions/download-artifact@v3
         with:
