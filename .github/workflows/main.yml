@@ -25,6 +25,7 @@ jobs:
           nuitka-version: main
           script-name: app.py
           onefile: true
+          enable-plugins: tk-inter
 
       # Uploads artifact
       - name: Upload Artifact
