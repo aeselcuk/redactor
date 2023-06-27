@@ -6,7 +6,7 @@ import os
 
 window = Tk()
 window.title("REDACTOR")
-window.geometry("400x480")
+window.geometry("600x480")
 
 def choose_file():
     global fileName
@@ -63,7 +63,7 @@ replacementCharacterEntry.insert(10, "x")
 replacementCharacterEntry.pack()
 replacementCharacterEntry.place(x=20, y=358, anchor="w", height=35)
 
-redactButton = Button(window, text="REDACT",  width=39, background="#000", font=("Calibri 16 bold"), command=redact_file)
+redactButton = Button(window, text="REDACT",  width=39, font=("Calibri 16 bold"), command=redact_file)
 redactButton.place(x=20, y=420, anchor="w", height="35")
 
 window.mainloop()
