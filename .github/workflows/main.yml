@@ -3,7 +3,7 @@ on: push
 jobs:
 
   build:
-    name: Build project
+    name: Build
     # Windows is currently the only platform this action supports
     runs-on: windows-latest
 
@@ -31,18 +31,17 @@ jobs:
         with:
           name: redactor
           path: build
-          
-          
+
   release:
-    name: Release project
+    name: Release
     # Windows is currently the only platform this action supports
     runs-on: windows-latest
+    needs: build
 
     steps:
       
       # Check-out repository
       - uses: actions/checkout@v3
-      - needs: build
       
       - uses: actions/download-artifact@v3
         with:
